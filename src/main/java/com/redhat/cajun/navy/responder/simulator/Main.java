@@ -63,6 +63,7 @@ public class Main extends AbstractVerticle {
             } else {
                 logger.error("WARNINIG: Verticles NOT deployed successfully.");
                 future.fail(ar.cause());
+                vertx.close();
             }
         });
 
@@ -83,6 +84,7 @@ public class Main extends AbstractVerticle {
                     } else {
                         logger.fatal("Failed to retrieve the configuration.");
                         future.fail(ar.cause());
+                        vertx.close();
                     }
                 });
     }
